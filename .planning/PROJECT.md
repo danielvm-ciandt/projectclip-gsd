@@ -8,6 +8,16 @@ Project Clip is a fork of Paperclip re-modeled for **consulting portfolios** —
 
 A Growth Unit lead can open one screen and see every client engagement's CPS-phase health, risk signals, and method-aware progress — without spreadsheets, status calls, or tribal knowledge.
 
+## Current Milestone: v0.1 Foundation
+
+**Goal:** Establish a clean, running Project Clip platform — forked from Paperclip, rebranded, and migrated to Neon Auth + Neon Database — that passes all quality checks and is ready for feature development.
+
+**Target features:**
+- Fork Paperclip, initialize repo, configure semantic-release + CI, all quality checks pass (v0.0.1)
+- Migrate authentication from self-hosted Better Auth to Neon Auth (v0.0.2)
+- Migrate database from embedded/local Postgres to Neon Database (v0.0.3)
+- Rebrand from Paperclip to Project Clip — zero "paperclip" occurrences in source (v0.0.4)
+
 ## Requirements
 
 ### Validated
@@ -17,9 +27,9 @@ A Growth Unit lead can open one screen and see every client engagement's CPS-pha
 ### Active
 
 - [ ] Fork Paperclip and make it run with all existing quality checks passing
+- [ ] Rebrand from Paperclip to Project Clip (zero "paperclip" occurrences in source)
 - [ ] Migrate authentication from self-hosted Better Auth to Neon Auth
 - [ ] Migrate database from embedded/local Postgres to Neon Database
-- [ ] Rebrand from Paperclip to Project Clip (zero "paperclip" occurrences in source)
 - [ ] Implement Portfolio → Client → Project → (optional) Team hierarchy
 - [ ] Encode the CPS three-phase lifecycle (Setup → Production Flow → Value Activation) with phases, gates, routines, and deliverable templates
 - [ ] Ship Method Adapters for BMAD, Spec-Kit, Taskmaster, and CAPS (v1); remaining six adapters in v1.1+
@@ -87,4 +97,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-13 after initialization*
+*Last updated: 2026-04-13 after milestone v0.1 Foundation started*
