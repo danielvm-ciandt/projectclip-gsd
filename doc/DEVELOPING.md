@@ -14,6 +14,7 @@ Current implementation status:
 
 - Node.js 20+
 - pnpm 9+
+- [shellcheck](https://www.shellcheck.net/) — required to run `pnpm lint:sh` locally (install via `brew install shellcheck` on macOS or `apt install shellcheck` on Debian/Ubuntu)
 
 ## Dependency Lockfile Policy
 

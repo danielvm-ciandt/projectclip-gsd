@@ -70,16 +70,15 @@ cleanup_release_state() {
     printf '%s\n' "$untracked_changes" | while IFS= read -r path; do
       [ -z "$path" ] && continue
       if [ -d "$REPO_ROOT/$path" ]; then
-        rm -rf "$REPO_ROOT/$path"
+        rm -rf "${REPO_ROOT:?}/$path"
       else
-        rm -f "$REPO_ROOT/$path"
+        rm -f "${REPO_ROOT:?}/$path"
       fi
     done
   fi
 }
 
 set_cleanup_trap() {
-  cleanup_on_exit=true
   trap cleanup_release_state EXIT
 }
 
