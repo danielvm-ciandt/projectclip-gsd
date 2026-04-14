@@ -12,6 +12,7 @@ Deliver **Project Clip** as a Paperclip fork that migrates to **Neon Auth + Neon
 
 - [ ] **Phase 1: Fork & platform baseline** — Runnable Paperclip fork, CI, semantic-release, quality gates (PRD Epic 0 / `v0.0.1`).
 - [ ] **Phase 2: Neon Auth** — Managed auth; sessions power app and downstream features (Epic 1).
+- [ ] **Phase 02.1: update node from 20 to 24LTS (INSERTED)** — Urgent platform alignment between Phase 2 and Phase 3.
 - [ ] **Phase 3: Neon Database** — Serverless Postgres; migrations; branching workflow (Epic 2).
 - [ ] **Phase 4: Rebrand** — `@projectclip/*`, CLI, zero stray Paperclip branding (Epic 3).
 - [ ] **Phase 5: Portfolio hierarchy** — Clients, teams, extended projects, role catalog (Epic 4 / `v0.1.0`).
@@ -75,10 +76,20 @@ Plans:
 
 ---
 
+### Phase 02.1: update node from 20 to 24LTS (INSERTED)
+
+**Goal:** [Urgent work - to be planned]
+**Requirements**: TBD
+**Depends on:** Phase 2
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd-plan-phase 02.1 to break down)
+
 ### Phase 3: Neon Database
 
 **Goal:** Run all data on **Neon**; migrations clean; embedded/local Postgres path removed; branching for dev/CI.  
-**Depends on:** Phase 2.  
+**Depends on:** Phase 2 and Phase 02.1 (Node 24 LTS baseline before Neon DB work).  
 **PRD reference:** Epic 2.  
 **Requirements:** DATA-01..DATA-05, QUAL-01.  
 **UI hint:** no  
