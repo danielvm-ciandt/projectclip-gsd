@@ -4,8 +4,8 @@
 
 Phase: 1 — Fork & platform baseline (next to plan / execute)
 Plan: —
-Status: Requirements + roadmap defined — ready for `/gsd-discuss-phase 1` or `/gsd-plan-phase 1`
-Last activity: 2026-04-13 — Added `.planning/REQUIREMENTS.md` and `.planning/ROADMAP.md` (10 phases, PRD Epics 0–9)
+Status: Phase 1 context gathered — ready for `/gsd-plan-phase 1`
+Last activity: 2026-04-13 — Captured `01-CONTEXT.md` (fork baseline, CI/e2e = Paperclip parity, toolchain = upstream, release = dry-run on main, first tag `v0.0.1`)
 
 ## Project Reference
 
@@ -16,4 +16,6 @@ See: .planning/PROJECT.md (updated 2026-04-13)
 
 ## Accumulated Context
 
-(None yet — milestone just started)
+- **Phase 1:** `.planning/phases/01-fork-platform-baseline/01-CONTEXT.md` — resume planning from this file.
+
+**Session resume file:** `.planning/phases/01-fork-platform-baseline/01-CONTEXT.md`
