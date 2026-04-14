@@ -46,3 +46,10 @@ Upstream uses **`scripts/release.sh`** for CalVer-style npm publishing (canary/s
 - `PAPERCLIP_AUTH_PROVIDER` env var controls auth cutover (default: better-auth)
 - Neon Auth Beta status: acceptable for internal deployment
 - Legacy better-auth path preserved during cutover; removal planned in Phase 2 cleanup (plan 02-04)
+
+### Schema strategy change (AUTH-05)
+
+- `packages/db/src/schema/auth.ts` — auth user table now references `neon_auth.users_sync` via Drizzle `pgSchema`; managed by Neon Auth, not Drizzle migrations when `PAPERCLIP_AUTH_PROVIDER=neon`
+- `packages/db/src/schema/board_api_keys.ts` — removed Drizzle FK constraint on `userId`; now plain `text` column (user ID validated at application layer via Neon Auth session)
+- `packages/db/src/schema/cli_auth_challenges.ts` — removed Drizzle FK constraint on `approvedByUserId`; now plain `text` column
+- Migration note: Existing database users must re-authenticate after cutover (different signing keys, different schema)
