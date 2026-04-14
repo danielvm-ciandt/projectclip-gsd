@@ -8,7 +8,9 @@ Project Clip is a fork of Paperclip re-modeled for **consulting portfolios** —
 
 A Growth Unit lead can open one screen and see every client engagement's CPS-phase health, risk signals, and method-aware progress — without spreadsheets, status calls, or tribal knowledge.
 
-## Current Milestone: v0.1 Foundation
+## Current milestone: v0.1 Foundation (`v0.1.0`)
+
+**GSD / STATE:** Canonical version id **`v0.1.0`**, display name **Foundation** (see **ROADMAP.md** Overview — 🚧 marker). **v1.0.0** in the long-range plan is **MVP GA** (Phase 10), not this milestone.
 
 **Goal:** Establish a clean, running Project Clip platform — forked from Paperclip, rebranded, and migrated to Neon Auth + Neon Database — that passes all quality checks and is ready for feature development.
 
@@ -97,4 +99,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-13 after milestone v0.1 Foundation started*
+*Last updated: 2026-04-14 — aligned GSD milestone id (`v0.1.0` / Foundation) with ROADMAP and STATE*

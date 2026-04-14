@@ -2,6 +2,8 @@
 
 ## Overview
 
+**Current GSD milestone:** 🚧 **v0.1.0 Foundation** — active program through **Epics 0–3** (roadmap Phases 1–4: fork, Neon Auth, Neon Database, rebrand). This is the planning bucket in **STATE.md** and `/gsd-*` tools. **v1.0.0** below is **MVP GA** (Phase 10), not the current milestone. *(The Epic 4 / portfolio line references a **product release** label `v0.1.0`; that is separate from this foundation milestone name.)*
+
 Deliver **Project Clip** as a Paperclip fork that migrates to **Neon Auth + Neon Database**, rebrands, then layers **portfolio hierarchy**, the **CPS** operating model, **SDD method adapters**, and **portfolio health / routine execution** — culminating in a **pilot** and **v1.0.0 GA**. Phases follow PRD **Epics 0–9** (sequential releases). Post-GA work (remaining adapters, ticketing bridge) lives in **REQUIREMENTS.md** v2.
 
 **Mapping:** PRD Epic *N* → Roadmap Phase *N+1* (Epic 0 = Phase 1).
