@@ -37,7 +37,14 @@ Deliver **Project Clip** as a Paperclip fork that migrates to **Neon Auth + Neon
 2. Typecheck, unit tests, build, and e2e (where applicable) pass in CI.
 3. semantic-release configuration is valid for the release pipeline.
 
-**Plans:** TBD (e.g. `01-01` import fork, `01-02` CI, `01-03` release config).
+**Plans:** 4 plans (`01-01` … `01-04`)
+
+Plans:
+
+- [ ] `01-01-PLAN.md` — Import Paperclip tree (D-01), `FORK_DIFF.md` stub, `[BLOCKING] pnpm db:migrate` (BOOT-01, BOOT-07)
+- [ ] `01-02-PLAN.md` — Green typecheck / Vitest / build / e2e (D-02, D-04), `[BLOCKING] pnpm db:migrate` if schema touched (BOOT-02..BOOT-05)
+- [ ] `01-03-PLAN.md` — Port GitHub Actions to `main`, QUAL-01 alignment, document CI deltas (D-03, D-04, QUAL-01, BOOT-07)
+- [ ] `01-04-PLAN.md` — semantic-release + angular preset, `main` push dry-run CI, `release.sh` coexistence in FORK_DIFF (BOOT-06, BOOT-07, QUAL-02, D-06, D-07)
 
 ---
 
@@ -211,7 +218,7 @@ Deliver **Project Clip** as a Paperclip fork that migrates to **Neon Auth + Neon
 
 | Phase | Name | Plans complete | Status | Completed |
 |-------|------|----------------|--------|-----------|
-| 1 | Fork & platform baseline | 0/TBD | Not started | — |
+| 1 | Fork & platform baseline | 0/4 | Not started | — |
 | 2 | Neon Auth | 0/TBD | Not started | — |
 | 3 | Neon Database | 0/TBD | Not started | — |
 | 4 | Rebrand | 0/TBD | Not started | — |

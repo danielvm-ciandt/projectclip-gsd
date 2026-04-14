@@ -22,11 +22,11 @@ A Growth Unit lead can open one screen and see every client engagement's CPS-pha
 
 ### Validated
 
-(None yet — ship to validate)
+- **Phase 1 (2026-04-14):** Paperclip monorepo imported at repo root; `pnpm` install/migrate, typecheck, Vitest, build, and Playwright e2e (skip-LLM) pass locally; GitHub Actions retargeted to **`main`**; **semantic-release** config + dry-run workflow on push to `main` (`npmPublish: false`). See `FORK_DIFF.md`.
 
 ### Active
 
-- [ ] Fork Paperclip and make it run with all existing quality checks passing
+- [x] Fork Paperclip and make it run with all existing quality checks passing
 - [ ] Rebrand from Paperclip to Project Clip (zero "paperclip" occurrences in source)
 - [ ] Migrate authentication from self-hosted Better Auth to Neon Auth
 - [ ] Migrate database from embedded/local Postgres to Neon Database
