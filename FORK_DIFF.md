@@ -38,3 +38,11 @@ Upstream uses **`scripts/release.sh`** for CalVer-style npm publishing (canary/s
 ## Default branch summary
 
 - All Project Clip automation assumes the GitHub default branch **`main`** (not `master`).
+
+## Phase 2: Neon Auth
+
+- `server/src/auth/neon-auth.ts` — NEW: Neon Auth proxy handler and session resolver
+  replacing self-hosted Better Auth when PAPERCLIP_AUTH_PROVIDER=neon
+- `PAPERCLIP_AUTH_PROVIDER` env var controls auth cutover (default: better-auth)
+- Neon Auth Beta status: acceptable for internal deployment
+- Legacy better-auth path preserved during cutover; removal planned in Phase 2 cleanup (plan 02-04)

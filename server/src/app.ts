@@ -48,7 +48,7 @@ import { createPluginDevWatcher } from "./services/plugin-dev-watcher.js";
 import { createPluginHostServiceCleanup } from "./services/plugin-host-service-cleanup.js";
 import { pluginRegistryService } from "./services/plugin-registry.js";
 import { createHostClientHandlers } from "@paperclipai/plugin-sdk";
-import type { BetterAuthSessionResult } from "./auth/better-auth.js";
+import type { AuthSessionResult } from "./middleware/auth.js";
 
 type UiMode = "none" | "static" | "vite-dev";
 const FEEDBACK_EXPORT_FLUSH_INTERVAL_MS = 5_000;
@@ -84,7 +84,7 @@ export async function createApp(
     hostVersion?: string;
     localPluginDir?: string;
     betterAuthHandler?: express.RequestHandler;
-    resolveSession?: (req: ExpressRequest) => Promise<BetterAuthSessionResult | null>;
+    resolveSession?: (req: ExpressRequest) => Promise<AuthSessionResult | null>;
   },
 ) {
   const app = express();
@@ -133,7 +133,13 @@ export async function createApp(
       },
     });
   });
-  if (opts.betterAuthHandler) {
+  // Feature flag: PAPERCLIP_AUTH_PROVIDER=neon uses Neon Auth proxy
+  // PAPERCLIP_AUTH_PROVIDER=better-auth (default) uses legacy self-hosted path
+  const authProvider = process.env.PAPERCLIP_AUTH_PROVIDER ?? "better-auth";
+  if (authProvider === "neon") {
+    const { createNeonAuthProxyHandler } = await import("./auth/neon-auth.js");
+    app.all("/api/auth/{*authPath}", createNeonAuthProxyHandler());
+  } else if (opts.betterAuthHandler) {
     app.all("/api/auth/{*authPath}", opts.betterAuthHandler);
   }
   app.use(llmRoutes(db));
