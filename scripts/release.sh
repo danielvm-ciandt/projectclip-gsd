@@ -13,8 +13,6 @@ skip_verify=false
 print_version_only=false
 tag_name=""
 
-cleanup_on_exit=false
-
 usage() {
   cat <<'EOF'
 Usage:
