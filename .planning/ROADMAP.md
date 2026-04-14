@@ -64,7 +64,14 @@ Plans:
 2. Protected APIs resolve the current user/session consistently.
 3. Previously working auth-dependent features (agents, tokens) remain functional.
 
-**Plans:** TBD.
+**Plans:** 4 plans (`02-01` … `02-04`)
+
+Plans:
+
+- [ ] `02-01-PLAN.md` — Neon Auth Express proxy + session resolver; feature flag (D-06); agent JWT passthrough (AUTH-01, AUTH-03, AUTH-04)
+- [ ] `02-02-PLAN.md` — Drizzle schema: neon_auth ownership; remove FK constraints from board_api_keys + cli_auth (AUTH-05)
+- [ ] `02-03-PLAN.md` — SPA: /login route, /auth redirect, Google OAuth primary CTA, @ciandt.com check, no sign-up UI (AUTH-01, AUTH-02, D-01..D-05)
+- [ ] `02-04-PLAN.md` — Legacy Better Auth removal (D-06 cutover); CI with Neon Auth env vars; human verification checkpoint (AUTH-01..AUTH-05, QUAL-01)
 
 ---
 
@@ -221,7 +228,7 @@ Plans:
 | Phase | Name | Plans complete | Status | Completed |
 |-------|------|----------------|--------|-----------|
 | 1 | Fork & platform baseline | 0/4 | Not started | — |
-| 2 | Neon Auth | 0/TBD | Not started | — |
+| 2 | Neon Auth | 0/4 | Not started | — |
 | 3 | Neon Database | 0/TBD | Not started | — |
 | 4 | Rebrand | 0/TBD | Not started | — |
 | 5 | Portfolio hierarchy | 0/TBD | Not started | — |
