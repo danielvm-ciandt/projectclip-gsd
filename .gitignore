@@ -54,4 +54,3 @@ tests/release-smoke/playwright-report/
 .claude/worktrees/
 .cursor
 _bmad-output
-docs/bugs
