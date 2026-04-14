@@ -4,8 +4,8 @@
 
 Phase: Not started (defining requirements)
 Plan: —
-Status: Defining requirements
-Last activity: 2026-04-13 — Milestone v0.1 Foundation started
+Status: Domain research complete — next: REQUIREMENTS.md + ROADMAP.md (resume new-project flow)
+Last activity: 2026-04-13 — Completed `.planning/research/` (STACK, FEATURES, ARCHITECTURE, PITFALLS, SUMMARY)
 
 ## Project Reference
 
