@@ -1,11 +1,11 @@
 import { pgTable, uuid, text, timestamp, index, uniqueIndex } from "drizzle-orm/pg-core";
-import { authUsers } from "./auth.js";
 
 export const boardApiKeys = pgTable(
   "board_api_keys",
   {
     id: uuid("id").primaryKey().defaultRandom(),
-    userId: text("user_id").notNull().references(() => authUsers.id, { onDelete: "cascade" }),
+    userId: text("user_id").notNull(),
+    // No FK — user ID is validated via Neon Auth session at the application layer (AUTH-05)
     name: text("name").notNull(),
     keyHash: text("key_hash").notNull(),
     lastUsedAt: timestamp("last_used_at", { withTimezone: true }),

@@ -744,7 +744,8 @@ find_issue_by_query() {
 }
 
 run_case_a() {
-  local marker="OPENCLAW_CASE_A_OK_$(date +%s)"
+  local marker
+  marker="OPENCLAW_CASE_A_OK_$(date +%s)"
   local description
   description="Case A validation.\n\n1) Read this issue.\n2) Post a comment containing exactly: ${marker}\n3) Mark this issue done."
 
@@ -784,7 +785,8 @@ run_case_a() {
 }
 
 run_case_b() {
-  local marker="OPENCLAW_CASE_B_OK_$(date +%s)"
+  local marker
+  marker="OPENCLAW_CASE_B_OK_$(date +%s)"
   local message_text="${marker}"
   local description
   description="Case B validation.\n\nUse the message tool to send this exact text to the user's main chat session in webchat:\n${message_text}\n\nAfter sending, post a Paperclip issue comment containing exactly: ${marker}\nThen mark this issue done."
@@ -829,8 +831,9 @@ run_case_b() {
 run_case_c() {
   patch_agent_session_strategy_run
 
-  local marker="OPENCLAW_CASE_C_CREATED_$(date +%s)"
-  local ack_marker="OPENCLAW_CASE_C_ACK_$(date +%s)"
+  local marker ack_marker
+  marker="OPENCLAW_CASE_C_CREATED_$(date +%s)"
+  ack_marker="OPENCLAW_CASE_C_ACK_$(date +%s)"
   local original_issue_reference="the original case issue you are currently reading"
   local description
   description="Case C validation.\n\nTreat this run as a fresh/new session.\nCreate a NEW Paperclip issue in this same company with title exactly:\n${marker}\nUse description: 'created by case C smoke'.\n\nThen post a comment on ${original_issue_reference} containing exactly: ${ack_marker}\nDo NOT post the ACK comment on the newly created issue.\nThen mark the original case issue done."

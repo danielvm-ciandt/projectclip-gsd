@@ -13,8 +13,6 @@ skip_verify=false
 print_version_only=false
 tag_name=""
 
-cleanup_on_exit=false
-
 usage() {
   cat <<'EOF'
 Usage:
@@ -70,16 +68,15 @@ cleanup_release_state() {
     printf '%s\n' "$untracked_changes" | while IFS= read -r path; do
       [ -z "$path" ] && continue
       if [ -d "$REPO_ROOT/$path" ]; then
-        rm -rf "$REPO_ROOT/$path"
+        rm -rf "${REPO_ROOT:?}/$path"
       else
-        rm -f "$REPO_ROOT/$path"
+        rm -f "${REPO_ROOT:?}/$path"
       fi
     done
   fi
 }
 
 set_cleanup_trap() {
-  cleanup_on_exit=true
   trap cleanup_release_state EXIT
 }
 
@@ -138,7 +135,7 @@ TARGET_PUBLISH_VERSION="$TARGET_STABLE_VERSION"
 DIST_TAG="latest"
 
 if [ "$channel" = "canary" ]; then
-  require_on_master_branch
+  require_on_main_branch
   TARGET_PUBLISH_VERSION="$(next_canary_version "$TARGET_STABLE_VERSION" "${PUBLIC_PACKAGE_NAMES[@]}")"
   DIST_TAG="canary"
   tag_name="$(canary_tag_name "$TARGET_PUBLISH_VERSION")"

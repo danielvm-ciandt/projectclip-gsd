@@ -1,5 +1,4 @@
 import { pgTable, uuid, text, timestamp, index } from "drizzle-orm/pg-core";
-import { authUsers } from "./auth.js";
 import { companies } from "./companies.js";
 import { boardApiKeys } from "./board_api_keys.js";
 
@@ -14,7 +13,8 @@ export const cliAuthChallenges = pgTable(
     requestedCompanyId: uuid("requested_company_id").references(() => companies.id, { onDelete: "set null" }),
     pendingKeyHash: text("pending_key_hash").notNull(),
     pendingKeyName: text("pending_key_name").notNull(),
-    approvedByUserId: text("approved_by_user_id").references(() => authUsers.id, { onDelete: "set null" }),
+    approvedByUserId: text("approved_by_user_id"),
+    // No FK — user ID comes from Neon Auth session (AUTH-05)
     boardApiKeyId: uuid("board_api_key_id").references(() => boardApiKeys.id, { onDelete: "set null" }),
     approvedAt: timestamp("approved_at", { withTimezone: true }),
     cancelledAt: timestamp("cancelled_at", { withTimezone: true }),

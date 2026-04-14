@@ -2,6 +2,8 @@
 
 ## Overview
 
+**Current GSD milestone:** 🚧 **v0.1.0 Foundation** — active program through **Epics 0–3** (roadmap Phases 1–4: fork, Neon Auth, Neon Database, rebrand). This is the planning bucket in **STATE.md** and `/gsd-*` tools. **v1.0.0** below is **MVP GA** (Phase 10), not the current milestone. *(The Epic 4 / portfolio line references a **product release** label `v0.1.0`; that is separate from this foundation milestone name.)*
+
 Deliver **Project Clip** as a Paperclip fork that migrates to **Neon Auth + Neon Database**, rebrands, then layers **portfolio hierarchy**, the **CPS** operating model, **SDD method adapters**, and **portfolio health / routine execution** — culminating in a **pilot** and **v1.0.0 GA**. Phases follow PRD **Epics 0–9** (sequential releases). Post-GA work (remaining adapters, ticketing bridge) lives in **REQUIREMENTS.md** v2.
 
 **Mapping:** PRD Epic *N* → Roadmap Phase *N+1* (Epic 0 = Phase 1).
@@ -10,6 +12,7 @@ Deliver **Project Clip** as a Paperclip fork that migrates to **Neon Auth + Neon
 
 - [ ] **Phase 1: Fork & platform baseline** — Runnable Paperclip fork, CI, semantic-release, quality gates (PRD Epic 0 / `v0.0.1`).
 - [ ] **Phase 2: Neon Auth** — Managed auth; sessions power app and downstream features (Epic 1).
+- [ ] **Phase 02.1: update node from 20 to 24LTS (INSERTED)** — Urgent platform alignment between Phase 2 and Phase 3.
 - [ ] **Phase 3: Neon Database** — Serverless Postgres; migrations; branching workflow (Epic 2).
 - [ ] **Phase 4: Rebrand** — `@projectclip/*`, CLI, zero stray Paperclip branding (Epic 3).
 - [ ] **Phase 5: Portfolio hierarchy** — Clients, teams, extended projects, role catalog (Epic 4 / `v0.1.0`).
@@ -62,14 +65,31 @@ Plans:
 2. Protected APIs resolve the current user/session consistently.
 3. Previously working auth-dependent features (agents, tokens) remain functional.
 
-**Plans:** TBD.
+**Plans:** 4 plans (`02-01` … `02-04`)
+
+Plans:
+
+- [ ] `02-01-PLAN.md` — Neon Auth Express proxy + session resolver; feature flag (D-06); agent JWT passthrough (AUTH-01, AUTH-03, AUTH-04)
+- [ ] `02-02-PLAN.md` — Drizzle schema: neon_auth ownership; remove FK constraints from board_api_keys + cli_auth (AUTH-05)
+- [ ] `02-03-PLAN.md` — SPA: /login route, /auth redirect, Google OAuth primary CTA, @ciandt.com check, no sign-up UI (AUTH-01, AUTH-02, D-01..D-05)
+- [ ] `02-04-PLAN.md` — Legacy Better Auth removal (D-06 cutover); CI with Neon Auth env vars; human verification checkpoint (AUTH-01..AUTH-05, QUAL-01)
 
 ---
+
+### Phase 02.1: update node from 20 to 24LTS (INSERTED)
+
+**Goal:** [Urgent work - to be planned]
+**Requirements**: TBD
+**Depends on:** Phase 2
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd-plan-phase 02.1 to break down)
 
 ### Phase 3: Neon Database
 
 **Goal:** Run all data on **Neon**; migrations clean; embedded/local Postgres path removed; branching for dev/CI.  
-**Depends on:** Phase 2.  
+**Depends on:** Phase 2 and Phase 02.1 (Node 24 LTS baseline before Neon DB work).  
 **PRD reference:** Epic 2.  
 **Requirements:** DATA-01..DATA-05, QUAL-01.  
 **UI hint:** no  
@@ -219,7 +239,7 @@ Plans:
 | Phase | Name | Plans complete | Status | Completed |
 |-------|------|----------------|--------|-----------|
 | 1 | Fork & platform baseline | 0/4 | Not started | — |
-| 2 | Neon Auth | 0/TBD | Not started | — |
+| 2 | Neon Auth | 0/4 | Not started | — |
 | 3 | Neon Database | 0/TBD | Not started | — |
 | 4 | Rebrand | 0/TBD | Not started | — |
 | 5 | Portfolio hierarchy | 0/TBD | Not started | — |

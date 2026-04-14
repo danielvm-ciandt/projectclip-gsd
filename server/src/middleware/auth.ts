@@ -5,7 +5,6 @@ import type { Db } from "@paperclipai/db";
 import { agentApiKeys, agents, companyMemberships, instanceUserRoles } from "@paperclipai/db";
 import { verifyLocalAgentJwt } from "../agent-auth-jwt.js";
 import type { DeploymentMode } from "@paperclipai/shared";
-import type { BetterAuthSessionResult } from "../auth/better-auth.js";
 import { logger } from "./logger.js";
 import { boardAuthService } from "../services/board-auth.js";
 
@@ -13,9 +12,15 @@ function hashToken(token: string) {
   return createHash("sha256").update(token).digest("hex");
 }
 
+// Shared session result shape — compatible with both BetterAuth and Neon Auth resolvers
+export type AuthSessionResult = {
+  session: { id: string; userId: string; expiresAt?: Date } | null;
+  user: { id: string; email?: string | null; name?: string | null; image?: string | null } | null;
+};
+
 interface ActorMiddlewareOptions {
   deploymentMode: DeploymentMode;
-  resolveSession?: (req: Request) => Promise<BetterAuthSessionResult | null>;
+  resolveSession?: (req: Request) => Promise<AuthSessionResult | null>;
 }
 
 export function actorMiddleware(db: Db, opts: ActorMiddlewareOptions): RequestHandler {
@@ -31,7 +36,7 @@ export function actorMiddleware(db: Db, opts: ActorMiddlewareOptions): RequestHa
     const authHeader = req.header("authorization");
     if (!authHeader?.toLowerCase().startsWith("bearer ")) {
       if (opts.deploymentMode === "authenticated" && opts.resolveSession) {
-        let session: BetterAuthSessionResult | null = null;
+        let session: AuthSessionResult | null = null;
         try {
           session = await opts.resolveSession(req);
         } catch (err) {

@@ -88,8 +88,21 @@ jobs:
             pnpm install --lockfile-only --ignore-scripts --no-frozen-lockfile
           fi
 
+  lint-shell:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run shellcheck on all scripts
+        run: |
+          find scripts -name "*.sh" -print0 \
+            | xargs -0 shellcheck --severity=warning
+
   verify:
-    needs: [policy]
+    needs: [policy, lint-shell]
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
@@ -127,7 +140,7 @@ jobs:
           ./scripts/release.sh canary --skip-verify --dry-run
 
   e2e:
-    needs: [policy]
+    needs: [policy, lint-shell]
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
