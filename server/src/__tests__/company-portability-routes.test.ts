@@ -73,11 +73,11 @@ describe("company portability routes", () => {
   });
 
   it("rejects non-CEO agents from CEO-safe export preview routes", async () => {
-    mockAgentService.getById.mockResolvedValue({
+    mockAgentService.getById.mockImplementation(async () => ({
       id: "agent-1",
       companyId: "11111111-1111-4111-8111-111111111111",
       role: "engineer",
-    });
+    }));
     const app = await createApp({
       type: "agent",
       agentId: "agent-1",

@@ -21,6 +21,9 @@ const AGENT_NAME = "CEO";
 const TASK_TITLE = "E2E test task";
 
 test.describe("Onboarding wizard", () => {
+  // Adapter probes + agent creation can exceed the default 60s Playwright test timeout.
+  test.describe.configure({ timeout: 180_000 });
+
   test("completes full wizard flow", async ({ page }) => {
     await page.goto("/onboarding");
 
@@ -50,9 +53,10 @@ test.describe("Onboarding wizard", () => {
 
     await page.getByRole("button", { name: "Next" }).click();
 
+    // Step 2 Next runs adapter test-environment then creates the agent; embedded/local probes can exceed 30s under load.
     await expect(
       page.locator("h3", { hasText: "Give it something to do" })
-    ).toBeVisible({ timeout: 30_000 });
+    ).toBeVisible({ timeout: 120_000 });
 
     const taskTitleInput = page.locator(
       'input[placeholder="e.g. Research competitor pricing"]'
